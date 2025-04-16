@@ -1,26 +1,31 @@
-import { AppProvider, Button, Card, Page, Text } from "@shopify/polaris";
+import { AppProvider, Page } from "@shopify/polaris";
 import "@shopify/polaris/build/esm/styles.css";
 import enTranslations from "@shopify/polaris/locales/en.json";
 import "./App.css";
+import Container from "./components/Container";
 
 function App() {
   return (
     <AppProvider i18n={enTranslations}>
       <Page title="Verdikt Technical test" fullWidth>
-        <Card>
-          <Text as="h2" variant="headingLg">
-            Card title
-          </Text>
-          <Text as="p" variant="bodyMd">
-            This is a really important content, you should read everything if
-            you want to really understand what this content means, and if you
-            don't read it, it's not very important because I'm writing this just
-            to have a very big block of text :)
-          </Text>
-          <Button primary onClick={() => alert("Button clicked!")}>
-            Example button
-          </Button>
-        </Card>
+        <Container
+          card1={{
+            title: "Valider l'opération",
+            content: "Souhaitez vous créer cet utilisateur ?",
+            primaryAction: { type: "success", text: "Valider" },
+          }}
+          card2={{
+            title: "Supprimer un post",
+            content:
+              "Souhaitez vous réellement supprimer ce post ? Cette action est définitive.",
+            primaryAction: { type: "destructive", text: "Supprimer" },
+          }}
+          card3={{
+            title: "Connexion",
+            content: "Entrez votre nom d'utilisateur et mot de passe",
+            primaryAction: { type: "success", text: "Se connecter" },
+          }}
+        />
       </Page>
     </AppProvider>
   );
